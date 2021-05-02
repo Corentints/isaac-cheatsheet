@@ -34,7 +34,7 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center flex-1 lg:ml-6 lg:justify-end">
+              <div className="justify-center flex-1 hidden lg:ml-6 lg:justify-end lg:flex">
                 <button type="button">
                   <SearchIcon
                     className="w-5 h-5 text-gray-300"
