@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="pt-4 pb-8">
           <label
             htmlFor="search"
@@ -45,17 +45,17 @@ function App() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-2 pb-12 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {items
             .filter((item) => item.name.toLowerCase().includes("" + search))
             .map((item) => (
               <ItemCard item={item} />
             ))}
         </div>
-      </div>
-      <p>
+        <p className="mt-4 text-sm text-gray-300">
         All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki</a>
       </p>
+      </div>
     </>
   );
 }
