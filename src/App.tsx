@@ -53,7 +53,7 @@ function App() {
             ))}
         </div>
         <p className="mt-4 text-sm text-gray-300">
-        All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki</a>
+        All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">Rebirth_Wiki (fandom)</a>
       </p>
       </div>
     </>
