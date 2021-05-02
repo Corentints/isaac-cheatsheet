@@ -15,28 +15,22 @@ export default function Navbar() {
                 <div className="hidden lg:block">
                   <div className="flex space-x-4">
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    <a
-                      href="#"
-                      className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-white bg-gray-900 rounded-md"
-                    >
+                    <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-white bg-gray-900 rounded-md">
                       <img
                         className="w-6 h-6 pixelated"
                         src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/8/80/Collectible_Nancy_Bombs_icon.png"
                         alt="Items"
                       />
                       <span>items</span>
-                    </a>
-                    <a
-                      href="#"
-                      className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md"
-                    >
+                    </span>
+                    <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
                         className="w-6 h-6 pixelated"
                         src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/a/a2/FaceCard.png"
                         alt="Items"
                       />
                       <span>cards</span>
-                    </a>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -65,30 +59,22 @@ export default function Navbar() {
           <Disclosure.Panel className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-              <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md"
-              >
-                Dashboard
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Team
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Projects
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-              >
-                Calendar
-              </a>
+              <span className="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md">
+                <img
+                  className="w-6 h-6 pixelated"
+                  src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/8/80/Collectible_Nancy_Bombs_icon.png"
+                  alt="Items"
+                />
+                <span>items</span>
+              </span>
+              <span className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
+                <img
+                  className="w-6 h-6 pixelated"
+                  src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/a/a2/FaceCard.png"
+                  alt="Items"
+                />
+                <span>cards</span>
+              </span>
             </div>
           </Disclosure.Panel>
         </>
