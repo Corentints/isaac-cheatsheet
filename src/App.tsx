@@ -53,6 +53,9 @@ function App() {
             ))}
         </div>
       </div>
+      <p>
+        All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki</a>
+      </p>
     </>
   );
 }
