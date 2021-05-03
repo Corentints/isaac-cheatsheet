@@ -6,3 +6,11 @@ export interface Item {
   description: string;
   type: string;
 }
+
+export interface Trinket {
+    name: string;
+    id: string;
+    image: string;
+    quote: string;
+    description: string;
+}

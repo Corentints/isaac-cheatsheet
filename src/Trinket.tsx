@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import ItemCard from "./components/UI/ItemCard";
+import TrinketCard from "./components/UI/TrinketCard";
 import Navbar from "./components/UI/Navbar";
-import { Item } from "./types"
+import { Trinket } from "./types"
 
 function App() {
-  const [items, setItems] = useState<Array<Item>>([]);
+  const [trinkets, setTrinkets] = useState<Array<Trinket>>([]);
   const [search, setSearch] = useState<String>("");
   useEffect(() => {
-    fetch("data.json")
+      fetch("trinket.json")
       .then((response) => response.json())
-      .then((itemList: Array<Item>) => {
-        setItems(itemList);
+      .then((trinketList: Array<Trinket>) => {
+        setTrinkets(trinketList);
       });
+
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
@@ -46,10 +47,10 @@ function App() {
           </div>
         </div>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {items
-            .filter((item) => item.name.toLowerCase().includes("" + search))
-            .map((item) => (
-              <ItemCard item={item} />
+          {trinkets
+            .filter((trinket) => trinket.name.toLowerCase().includes("" + search))
+            .map((trinket) => (
+              <TrinketCard trinket={trinket} />
             ))}
         </div>
         <p className="mt-4 text-sm text-gray-300">
