@@ -6,3 +6,20 @@ export interface Item {
   description: string;
   type: string;
 }
+
+export interface Trinket {
+    name: string;
+    id: string;
+    image: string;
+    quote: string;
+    description: string;
+}
+
+export interface CardRune {
+    name: string;
+    id: string;
+    image: string;
+    unlock: string;
+    message: string;
+    description: string;
+}
