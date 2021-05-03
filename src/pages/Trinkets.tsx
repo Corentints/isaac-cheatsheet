@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import TrinketCard from "./components/UI/TrinketCard";
-import Navbar from "./components/UI/Navbar";
-import { Trinket } from "./types"
+import TrinketCard from "../components/UI/TrinketCard";
+import Navbar from "../components/UI/Navbar";
+import { Trinket } from "../types"
 
-function App() {
+function Trinkets() {
   const [trinkets, setTrinkets] = useState<Array<Trinket>>([]);
   const [search, setSearch] = useState<String>("");
   useEffect(() => {
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default Trinkets;
