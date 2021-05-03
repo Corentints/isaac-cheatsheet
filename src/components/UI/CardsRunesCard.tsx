@@ -12,7 +12,7 @@ export default function CardsRunesCard({cardrune}: CardsRuneCardProps) {
     >
       <div className="flex-shrink-0">
         <img
-          className="w-8 h-auto"
+          className="w-8 h-auto pixelated"
           src={cardrune.image}
           alt={cardrune.name}
         />
