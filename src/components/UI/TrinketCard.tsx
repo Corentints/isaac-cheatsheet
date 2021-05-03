@@ -4,7 +4,7 @@ type TrinketCardProps = {
     trinket: Trinket;
   };
 
-export default function ItemCard({trinket}: TrinketCardProps) {
+export default function TrinketCard({trinket}: TrinketCardProps) {
   return (
     <div
       key={trinket.id}
@@ -21,6 +21,7 @@ export default function ItemCard({trinket}: TrinketCardProps) {
           <div className="flex items-center space-x-3">
             <p className="text-sm font-medium">{trinket.name}</p>
           </div>
+          <p className="text-xs text-gray-500">{trinket.quote}</p>
           <p className="text-sm">{trinket.description}</p>
       </div>
     </div>

@@ -21,6 +21,7 @@ export default function ItemCard({item}: ItemCardProps) {
           <div className="flex items-center space-x-3">
             <p className="text-sm font-medium">{item.name}</p>
           </div>
+        <p className="text-xs text-gray-500">{item.quote}</p>
           <p className="text-sm">{item.description}</p>
       </div>
     </div>

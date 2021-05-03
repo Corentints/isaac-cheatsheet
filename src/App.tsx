@@ -8,6 +8,8 @@ import {
 import Home from "./pages/Home";
 import Items from "./pages/Items";
 import Trinkets from "./pages/Trinkets";
+import CardRunes from "./pages/CardsRunes";
+
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
           </Route>
           <Route path="/trinkets">
             <Trinkets />
+          </Route>
+          <Route path="/cards-runes">
+            <CardRunes />
           </Route>
         </Switch>
     </Router>

@@ -17,7 +17,18 @@ export default function Navbar() {
                 <div className="hidden lg:block">
                 
                   <div className="flex space-x-4">
-                  <NavLink exact to="/items" activeClassName="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-white bg-gray-900 rounded-md">
+                  <NavLink exact to="/home" activeClassName="bg-gray-900 rounded-md">
+                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+                    <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                      <img
+                        className="w-6 h-auto pixelated"
+                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/e/e5/Character_Isaac_appearance.png"
+                        alt="Home"
+                      />
+                      <span>home</span>
+                    </span>
+                    </NavLink>
+                  <NavLink exact to="/items" activeClassName="bg-gray-900 rounded-md">
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                     <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
@@ -28,14 +39,24 @@ export default function Navbar() {
                       <span>items</span>
                     </span>
                     </NavLink>
-                    <NavLink exact to="/trinkets" activeClassName="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-white bg-gray-900 rounded-md">
+                    <NavLink exact to="/trinkets" activeClassName="bg-gray-900 rounded-md">
                     <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
                         className="w-6 h-6 pixelated"
-                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/a/a2/FaceCard.png"
-                        alt="Items"
+                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/4/40/Trinket_Callus_icon.png"
+                        alt="Trinkets"
                       />
-                      <span>cards</span>
+                      <span>trinkets</span>
+                    </span>
+                    </NavLink>
+                    <NavLink exact to="/cards-runes" activeClassName="bg-gray-900 rounded-md">
+                    <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                      <img
+                        className="w-6 h-6 pixelated"
+                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/4/40/Trinket_Callus_icon.png"
+                        alt="Trinkets"
+                      />
+                      <span>cards/runes</span>
                     </span>
                     </NavLink>
                   </div>
