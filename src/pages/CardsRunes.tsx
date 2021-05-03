@@ -42,7 +42,7 @@ function CardsRunes() {
               autoComplete="off"
               onChange={({ target }) => setSearch(target.value.toLowerCase())}
               className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
-              placeholder="Bob's Rotten Head"
+              placeholder="Ace of Diamonds"
             />
           </div>
         </div>

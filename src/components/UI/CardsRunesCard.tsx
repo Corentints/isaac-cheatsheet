@@ -12,7 +12,7 @@ export default function CardsRunesCard({cardrune}: CardsRuneCardProps) {
     >
       <div className="flex-shrink-0">
         <img
-          className="w-10 h-auto"
+          className="w-8 h-auto"
           src={cardrune.image}
           alt={cardrune.name}
         />
@@ -21,8 +21,9 @@ export default function CardsRunesCard({cardrune}: CardsRuneCardProps) {
           <div className="flex items-center space-x-3">
             <p className="text-sm font-medium">{cardrune.name}</p>
           </div>
-        <p className="text-xs text-gray-500">Unlock Method : {cardrune.unlock ? cardrune.unlock : 'Always available'}</p>
+          <p className="text-xs text-gray-500">{cardrune.message}</p>
           <p className="text-sm">{cardrune.description}</p>
+          <p className="text-xs text-gray-400">Unlock Method : {cardrune.unlock ? cardrune.unlock : 'Always available'}</p>
       </div>
     </div>
   );

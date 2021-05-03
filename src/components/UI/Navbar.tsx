@@ -32,7 +32,7 @@ export default function Navbar() {
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                     <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
-                        className="w-6 h-6 pixelated"
+                        className="w-8 h-8 pixelated"
                         src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/8/80/Collectible_Nancy_Bombs_icon.png"
                         alt="Items"
                       />
@@ -42,7 +42,7 @@ export default function Navbar() {
                     <NavLink exact to="/trinkets" activeClassName="bg-gray-900 rounded-md">
                     <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
-                        className="w-6 h-6 pixelated"
+                        className="w-8 h-8 pixelated"
                         src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/4/40/Trinket_Callus_icon.png"
                         alt="Trinkets"
                       />
@@ -52,8 +52,8 @@ export default function Navbar() {
                     <NavLink exact to="/cards-runes" activeClassName="bg-gray-900 rounded-md">
                     <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                       <img
-                        className="w-6 h-6 pixelated"
-                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/4/40/Trinket_Callus_icon.png"
+                        className="w-6 h-auto pixelated"
+                        src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/0/01/Ace_of_Spades_%28Card%29_Icon.png"
                         alt="Trinkets"
                       />
                       <span>cards/runes</span>
