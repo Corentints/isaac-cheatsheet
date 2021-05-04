@@ -1,62 +1,58 @@
 import { useEffect, useState } from "react";
-import TrinketCard from "../components/UI/TrinketCard";
-import Navbar from "../components/UI/Navbar";
-import { Trinket } from "../types"
+import { Trinket } from "../types";
+import SearchBar from "../components/UI/Searchbar";
+import Card from "../components/UI/Card";
+import LoadingCards from "../components/UI/LoadingCards";
 
-function Trinkets() {
-  const [trinkets, setTrinkets] = useState<Array<Trinket>>([]);
-  const [search, setSearch] = useState<String>("");
-  useEffect(() => {
-      fetch("trinket.json")
+type TrinketsProps = {
+  trinkets: Array<Trinket>;
+  setTrinkets: Function;
+  trinketsLoaded: Boolean;
+  setTrinketsLoaded: Function;
+};
+
+function Trinkets({
+  trinkets,
+  setTrinkets,
+  trinketsLoaded,
+  setTrinketsLoaded,
+}: TrinketsProps) {
+  const [search, setSearch] = useState<string>("");
+  async function loadTrinkets() {
+    fetch("trinket.json")
       .then((response) => response.json())
-      .then((trinketList: Array<Trinket>) => {
-        setTrinkets(trinketList);
+      .then((initialItems: any) => {
+        setTrinketsLoaded(true);
+        setTrinkets(initialItems);
       });
+  }
 
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+  useEffect(() => {
+    loadTrinkets();
+  });
   return (
     <>
-      <Navbar />
-      <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="pt-4 pb-8">
-          <label
-            htmlFor="search"
-            className="block text-sm font-medium text-gray-300"
-          >
-            Search
-          </label>
-          <div className="mt-1">
-            <input
-              type="search"
-              name="search"
-              id="search"
-              autoComplete="off"
-              onChange={({ target }) => setSearch(target.value.toLowerCase())}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
-              placeholder="The Left Hand"
-            />
-          </div>
-        </div>
+        <SearchBar placeholder="AAA Battery" onChange={setSearch} />
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {trinkets
-            .filter((trinket) => trinket.name.toLowerCase().includes("" + search))
-            .map((trinket) => (
-              <TrinketCard trinket={trinket} />
-            ))}
+          {!trinketsLoaded && <LoadingCards number={20} />}
+          {trinketsLoaded && (
+            <>
+              {trinkets
+                .filter((trinket) =>
+                  trinket.name.toLowerCase().includes(search)
+                )
+                .map((trinket) => (
+                  <Card
+                    key={trinket.name}
+                    image={trinket.image}
+                    name={trinket.name}
+                    description={trinket.description}
+                    message={trinket.quote}
+                  />
+                ))}
+            </>
+          )}
         </div>
-        <p className="mt-4 text-sm text-gray-300">
-        All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">Rebirth_Wiki (fandom)</a>
-      </p>
-      </div>
     </>
   );
 }

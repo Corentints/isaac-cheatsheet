@@ -1,62 +1,60 @@
-import { useEffect, useState } from "react";
-import CardsRunesCard from "../components/UI/CardsRunesCard";
-import Navbar from "../components/UI/Navbar";
-import { CardRune } from "../types"
+import { useState, useEffect } from "react";
+import { CardRune } from "../types";
+import Card from "../components/UI/Card";
+import SearchBar from "../components/UI/Searchbar";
+import LoadingCards from "../components/UI/LoadingCards";
 
-function CardsRunes() {
-  const [cardsrunes, setCardsrunes] = useState<Array<CardRune>>([]);
-  const [search, setSearch] = useState<String>("");
-  useEffect(() => {
-      fetch("cards-runes.json")
+type CardsRunesProps = {
+  cardsRunes: Array<CardRune>;
+  setCardsRunes: Function;
+  cardsRunesLoaded: Boolean;
+  setCardsRunesLoaded: Function;
+};
+
+function CardsRunes({
+  cardsRunes,
+  setCardsRunes,
+  cardsRunesLoaded,
+  setCardsRunesLoaded,
+}: CardsRunesProps) {
+  const [search, setSearch] = useState<string>("");
+
+  async function loadCardsRunes() {
+    fetch("cards-runes.json")
       .then((response) => response.json())
-      .then((cardsrunesList: Array<CardRune>) => {
-        setCardsrunes(cardsrunesList);
+      .then((initialItems: any) => {
+        setCardsRunesLoaded(true);
+        setCardsRunes(initialItems);
       });
+  }
 
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+  useEffect(() => {
+    loadCardsRunes();
+  });
   return (
     <>
-      <Navbar />
-      <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="pt-4 pb-8">
-          <label
-            htmlFor="search"
-            className="block text-sm font-medium text-gray-300"
-          >
-            Search
-          </label>
-          <div className="mt-1">
-            <input
-              type="search"
-              name="search"
-              id="search"
-              autoComplete="off"
-              onChange={({ target }) => setSearch(target.value.toLowerCase())}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
-              placeholder="Ace of Diamonds"
-            />
-          </div>
-        </div>
+        <SearchBar placeholder="XVIII - The Moon" onChange={setSearch} />
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {cardsrunes
-            .filter((cardrune) => cardrune.name.toLowerCase().includes("" + search))
-            .map((cardrune) => (
-              <CardsRunesCard cardrune={cardrune} />
-            ))}
+          {!cardsRunesLoaded && <LoadingCards number={20} />}
+          {cardsRunesLoaded && (
+            <>
+              {cardsRunes
+                .filter((cardsRune) =>
+                  cardsRune.name.toLowerCase().includes(search)
+                )
+                .map((cardsRune) => (
+                  <Card
+                    key={cardsRune.name}
+                    image={cardsRune.image}
+                    name={cardsRune.name}
+                    description={cardsRune.description}
+                    message={cardsRune.message}
+                    unlock={cardsRune.unlock ?? "Always available"}
+                  />
+                ))}
+            </>
+          )}
         </div>
-        <p className="mt-4 text-sm text-gray-300">
-        All game data is taken from <a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki">Rebirth_Wiki (fandom)</a>
-      </p>
-      </div>
     </>
   );
 }
