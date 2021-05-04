@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Trinket } from "../types";
 import SearchBar from "../components/UI/Searchbar";
 import Card from "../components/UI/Card";

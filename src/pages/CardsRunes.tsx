@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CardRune } from "../types";
 import Card from "../components/UI/Card";
 import SearchBar from "../components/UI/Searchbar";
