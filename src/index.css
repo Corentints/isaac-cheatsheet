@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 .pixelated {
   image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
