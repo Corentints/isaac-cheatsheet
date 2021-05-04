@@ -20,10 +20,12 @@ function App() {
   const [cardsRunesLoaded, setCardsRunesLoaded] = useState<Boolean>(false);
 
   async function loadItems() {
-    fetch('data.json').then(response => response.json()).then((initialItems: any) => {
-      setItemsLoaded(true);
-      setItems(initialItems)
-    })
+    fetch("data.json")
+      .then((response) => response.json())
+      .then((initialItems: any) => {
+        setItemsLoaded(true);
+        setItems(initialItems);
+      });
   }
 
   async function loadTrinkets() {
@@ -56,16 +58,10 @@ function App() {
       <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8 pt-[70px]">
         <Switch>
           <Route path="/items">
-            <Items
-              items={items}
-              itemsLoaded={itemsLoaded}
-            />
+            <Items items={items} itemsLoaded={itemsLoaded} />
           </Route>
           <Route path="/trinkets">
-            <Trinkets
-              trinkets={trinkets}
-              trinketsLoaded={trinketsLoaded}
-            />
+            <Trinkets trinkets={trinkets} trinketsLoaded={trinketsLoaded} />
           </Route>
           <Route path="/cards-runes">
             <CardRunes
