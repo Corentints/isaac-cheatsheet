@@ -54,7 +54,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar items={items} cardsRunes={cardsRunes} trinkets={trinkets} />
       <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8 pt-[70px]">
         <Switch>
           <Route path="/items">
