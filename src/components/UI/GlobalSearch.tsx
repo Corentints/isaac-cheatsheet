@@ -61,7 +61,7 @@ export default function GlobalSearch({
             <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-700 rounded-lg shadow-xl sm:my-8 sm:align-top sm:max-w-xl sm:w-full sm:p-2">
               <div>
                 <input
-                  onChange={({ target }) => setSearch(target.value)}
+                  onChange={({ target }) => setSearch(target.value.toLowerCase())}
                   value={search}
                   type="text"
                   name="search"
