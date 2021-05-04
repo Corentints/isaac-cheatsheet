@@ -15,6 +15,3 @@ html {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
 }
-::selection {
-  background-color: #374151;
-}
