@@ -10,7 +10,6 @@ import Trinkets from "./pages/Trinkets";
 import CardRunes from "./pages/CardsRunes";
 import { useState } from "react";
 import { CardRune, Item, Trinket } from "./types";
-import { ChevronUpIcon } from "@heroicons/react/outline";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);
