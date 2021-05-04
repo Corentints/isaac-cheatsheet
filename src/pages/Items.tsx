@@ -6,24 +6,11 @@ import LoadingCards from "../components/UI/LoadingCards"
 
 type ItemsProps = {
   items: Array<Item>,
-  setItems: Function,
   itemsLoaded: Boolean,
-  setItemsLoaded: Function
 }
 
-function Items({items, setItems, itemsLoaded, setItemsLoaded}: ItemsProps) {
+function Items({items, itemsLoaded}: ItemsProps) {
   const [search, setSearch] = useState<string>("");
-
-  async function loadItems() {
-    fetch('data.json').then(response => response.json()).then((initialItems: any) => {
-      setItemsLoaded(true);
-      setItems(initialItems)
-    })
-  }
-
-  useEffect(() => {
-    loadItems();
-  });
   return (
     <>
       <SearchBar placeholder="Brimstone" onChange={setSearch} />

@@ -8,18 +8,47 @@ import Navbar from "./components/UI/Navbar";
 import Items from "./pages/Items";
 import Trinkets from "./pages/Trinkets";
 import CardRunes from "./pages/CardsRunes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CardRune, Item, Trinket } from "./types";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);
   const [itemsLoaded, setItemsLoaded] = useState<Boolean>(false);
-
   const [trinkets, setTrinkets] = useState<Array<Trinket>>([]);
   const [trinketsLoaded, setTrinketsLoaded] = useState<Boolean>(false);
-
   const [cardsRunes, setCardsRunes] = useState<Array<CardRune>>([]);
   const [cardsRunesLoaded, setCardsRunesLoaded] = useState<Boolean>(false);
+
+  async function loadItems() {
+    fetch('data.json').then(response => response.json()).then((initialItems: any) => {
+      setItemsLoaded(true);
+      setItems(initialItems)
+    })
+  }
+
+  async function loadTrinkets() {
+    fetch("trinket.json")
+      .then((response) => response.json())
+      .then((initialItems: any) => {
+        setTrinketsLoaded(true);
+        setTrinkets(initialItems);
+      });
+  }
+
+  async function loadCardsRunes() {
+    fetch("cards-runes.json")
+      .then((response) => response.json())
+      .then((initialItems: any) => {
+        setCardsRunesLoaded(true);
+        setCardsRunes(initialItems);
+      });
+  }
+
+  useEffect(() => {
+    loadItems();
+    loadTrinkets();
+    loadCardsRunes();
+  }, []);
 
   return (
     <Router>
@@ -29,25 +58,19 @@ function App() {
           <Route path="/items">
             <Items
               items={items}
-              setItems={setItems}
               itemsLoaded={itemsLoaded}
-              setItemsLoaded={setItemsLoaded}
             />
           </Route>
           <Route path="/trinkets">
             <Trinkets
               trinkets={trinkets}
-              setTrinkets={setTrinkets}
               trinketsLoaded={trinketsLoaded}
-              setTrinketsLoaded={setTrinketsLoaded}
             />
           </Route>
           <Route path="/cards-runes">
             <CardRunes
               cardsRunes={cardsRunes}
-              setCardsRunes={setCardsRunes}
               cardsRunesLoaded={cardsRunesLoaded}
-              setCardsRunesLoaded={setCardsRunesLoaded}
             />
           </Route>
           <Route path="/">

@@ -6,31 +6,14 @@ import LoadingCards from "../components/UI/LoadingCards";
 
 type CardsRunesProps = {
   cardsRunes: Array<CardRune>;
-  setCardsRunes: Function;
   cardsRunesLoaded: Boolean;
-  setCardsRunesLoaded: Function;
 };
 
 function CardsRunes({
   cardsRunes,
-  setCardsRunes,
   cardsRunesLoaded,
-  setCardsRunesLoaded,
 }: CardsRunesProps) {
   const [search, setSearch] = useState<string>("");
-
-  async function loadCardsRunes() {
-    fetch("cards-runes.json")
-      .then((response) => response.json())
-      .then((initialItems: any) => {
-        setCardsRunesLoaded(true);
-        setCardsRunes(initialItems);
-      });
-  }
-
-  useEffect(() => {
-    loadCardsRunes();
-  });
   return (
     <>
         <SearchBar placeholder="XVIII - The Moon" onChange={setSearch} />

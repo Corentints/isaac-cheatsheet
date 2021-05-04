@@ -6,30 +6,14 @@ import LoadingCards from "../components/UI/LoadingCards";
 
 type TrinketsProps = {
   trinkets: Array<Trinket>;
-  setTrinkets: Function;
   trinketsLoaded: Boolean;
-  setTrinketsLoaded: Function;
 };
 
 function Trinkets({
   trinkets,
-  setTrinkets,
   trinketsLoaded,
-  setTrinketsLoaded,
 }: TrinketsProps) {
   const [search, setSearch] = useState<string>("");
-  async function loadTrinkets() {
-    fetch("trinket.json")
-      .then((response) => response.json())
-      .then((initialItems: any) => {
-        setTrinketsLoaded(true);
-        setTrinkets(initialItems);
-      });
-  }
-
-  useEffect(() => {
-    loadTrinkets();
-  });
   return (
     <>
         <SearchBar placeholder="AAA Battery" onChange={setSearch} />
