@@ -23,3 +23,9 @@ export interface CardRune {
     message: string;
     description: string;
 }
+
+export interface DiceRoom {
+  name: string;
+  image: string;
+  description: string;
+}

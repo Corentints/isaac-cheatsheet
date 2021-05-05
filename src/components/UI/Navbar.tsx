@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { NavLink } from "react-router-dom";
-import { CardRune, Item, Trinket } from "../../types";
+import { CardRune, DiceRoom, Item, Trinket } from "../../types";
 import GlobalSearch from "./GlobalSearch";
 import { useState } from "react";
 
@@ -10,9 +10,10 @@ type NavbarProps = {
   items: Array<Item>;
   cardsRunes: Array<CardRune>;
   trinkets: Array<Trinket>;
+  diceRooms: Array<DiceRoom>;
 };
 
-export default function Navbar({ items, cardsRunes, trinkets }: NavbarProps) {
+export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: NavbarProps) {
   const [openGlobalSearch, setOpenGlobalSearch] = useState(false);
   return (
     <div>
@@ -67,6 +68,20 @@ export default function Navbar({ items, cardsRunes, trinkets }: NavbarProps) {
                           <span>trinkets</span>
                         </span>
                       </NavLink>
+                      <NavLink
+                        exact
+                        to="/dice-rooms"
+                        activeClassName="bg-gray-900 rounded-md"
+                      >
+                        <span className="flex items-center px-3 py-2 mt-1 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                          <img
+                            className="w-8 h-8 pixelated"
+                            src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
+                            alt="Dice rooms"
+                          />
+                          <span>dice rooms</span>
+                        </span>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -88,6 +103,7 @@ export default function Navbar({ items, cardsRunes, trinkets }: NavbarProps) {
                     items={items}
                     cardsRunes={cardsRunes}
                     trinkets={trinkets}
+                    diceRooms={diceRooms}
                   />
                 </div>
                 <div className="flex lg:hidden">

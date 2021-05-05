@@ -1,4 +1,4 @@
-import { CardRune, Item, Trinket } from "../../types";
+import { CardRune, DiceRoom, Item, Trinket } from "../../types";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Card from "./Card";
@@ -9,6 +9,7 @@ type GlobalSearchProps = {
   items: Array<Item>;
   cardsRunes: Array<CardRune>;
   trinkets: Array<Trinket>;
+  diceRooms: Array<DiceRoom>;
 };
 
 export default function GlobalSearch({
@@ -17,6 +18,7 @@ export default function GlobalSearch({
   items,
   cardsRunes,
   trinkets,
+  diceRooms
 }: GlobalSearchProps) {
   const [search, setSearch] = useState("");
 
@@ -71,8 +73,8 @@ export default function GlobalSearch({
                 />
               </div>
               <div className="flex flex-col mt-3 space-y-3">
-                {search.length > 1 &&
-                  [...items, ...cardsRunes, ...trinkets]
+                {search.length > 0 &&
+                  [...items, ...cardsRunes, ...trinkets, ...diceRooms]
                     .filter((item) => item.name.toLowerCase().includes(search))
                     .map((item) => (
                       <Card
