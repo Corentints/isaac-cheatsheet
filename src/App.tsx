@@ -10,6 +10,7 @@ import Trinkets from "./pages/Trinkets";
 import CardRunes from "./pages/CardsRunes";
 import { useEffect, useState } from "react";
 import { CardRune, Item, Trinket } from "./types";
+import load from "./util/fetchData";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);
@@ -19,37 +20,10 @@ function App() {
   const [cardsRunes, setCardsRunes] = useState<Array<CardRune>>([]);
   const [cardsRunesLoaded, setCardsRunesLoaded] = useState<Boolean>(false);
 
-  async function loadItems() {
-    fetch("data.json")
-      .then((response) => response.json())
-      .then((initialItems: any) => {
-        setItemsLoaded(true);
-        setItems(initialItems);
-      });
-  }
-
-  async function loadTrinkets() {
-    fetch("trinket.json")
-      .then((response) => response.json())
-      .then((initialItems: any) => {
-        setTrinketsLoaded(true);
-        setTrinkets(initialItems);
-      });
-  }
-
-  async function loadCardsRunes() {
-    fetch("cards-runes.json")
-      .then((response) => response.json())
-      .then((initialItems: any) => {
-        setCardsRunesLoaded(true);
-        setCardsRunes(initialItems);
-      });
-  }
-
   useEffect(() => {
-    loadItems();
-    loadTrinkets();
-    loadCardsRunes();
+    load("data.json", setItems, setItemsLoaded);
+    load("trinket.json", setTrinkets, setTrinketsLoaded);
+    load("cards-runes.json", setCardsRunes, setCardsRunesLoaded);
   }, []);
 
   return (
