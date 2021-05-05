@@ -73,7 +73,7 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                         to="/dice-rooms"
                         activeClassName="bg-gray-900 rounded-md"
                       >
-                        <span className="flex items-center px-3 py-2 mt-1 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                        <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-8 h-8 pixelated"
                             src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
@@ -170,7 +170,7 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                         to="/dice-rooms"
                         activeClassName="bg-gray-900 rounded-md"
                       >
-                        <span className="flex items-center px-3 py-2 mt-1 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                        <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-8 h-8 pixelated"
                             src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
