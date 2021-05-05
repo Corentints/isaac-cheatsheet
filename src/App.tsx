@@ -11,6 +11,7 @@ import CardRunes from "./pages/CardsRunes";
 import { useEffect, useState } from "react";
 import { CardRune, Item, Trinket } from "./types";
 import load from "./util/fetchData";
+import Footer from "./components/UI/Footer";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);
@@ -41,15 +42,6 @@ function App() {
             <Redirect to="/items" />
           </Route>
         </Switch>
-        <p className="mt-4 text-sm text-gray-300">
-          All game data is taken from the{" "}
-          <a
-            href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth wiki"
-            className="text-gray-200 underline"
-          >
-            Rebirth Wiki
-          </a>
-        </p>
         <button
           type="button"
           onClick={() => window.scrollTo(0, 0)}
@@ -60,6 +52,7 @@ function App() {
           }}
         ></button>
       </div>
+      <Footer />
     </Router>
   );
 }
