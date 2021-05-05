@@ -14,16 +14,13 @@ import load from "./util/fetchData";
 
 function App() {
   const [items, setItems] = useState<Array<Item>>([]);
-  const [itemsLoaded, setItemsLoaded] = useState<Boolean>(false);
   const [trinkets, setTrinkets] = useState<Array<Trinket>>([]);
-  const [trinketsLoaded, setTrinketsLoaded] = useState<Boolean>(false);
   const [cardsRunes, setCardsRunes] = useState<Array<CardRune>>([]);
-  const [cardsRunesLoaded, setCardsRunesLoaded] = useState<Boolean>(false);
 
   useEffect(() => {
-    load("data.json", setItems, setItemsLoaded);
-    load("trinket.json", setTrinkets, setTrinketsLoaded);
-    load("cards-runes.json", setCardsRunes, setCardsRunesLoaded);
+    load("items.json", setItems);
+    load("trinkets.json", setTrinkets);
+    load("cards-runes.json", setCardsRunes);
   }, []);
 
   return (
@@ -32,16 +29,13 @@ function App() {
       <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8 pt-[70px]">
         <Switch>
           <Route path="/items">
-            <Items items={items} itemsLoaded={itemsLoaded} />
+            <Items items={items} />
           </Route>
           <Route path="/trinkets">
-            <Trinkets trinkets={trinkets} trinketsLoaded={trinketsLoaded} />
+            <Trinkets trinkets={trinkets} />
           </Route>
           <Route path="/cards-runes">
-            <CardRunes
-              cardsRunes={cardsRunes}
-              cardsRunesLoaded={cardsRunesLoaded}
-            />
+            <CardRunes cardsRunes={cardsRunes} />
           </Route>
           <Route path="/">
             <Redirect to="/items" />

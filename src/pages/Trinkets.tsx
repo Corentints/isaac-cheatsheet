@@ -6,37 +6,31 @@ import LoadingCards from "../components/UI/LoadingCards";
 
 type TrinketsProps = {
   trinkets: Array<Trinket>;
-  trinketsLoaded: Boolean;
 };
 
-function Trinkets({
-  trinkets,
-  trinketsLoaded,
-}: TrinketsProps) {
+function Trinkets({ trinkets }: TrinketsProps) {
   const [search, setSearch] = useState<string>("");
   return (
     <>
-        <SearchBar placeholder="AAA Battery" onChange={setSearch} />
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {!trinketsLoaded && <LoadingCards number={20} />}
-          {trinketsLoaded && (
-            <>
-              {trinkets
-                .filter((trinket) =>
-                  trinket.name.toLowerCase().includes(search)
-                )
-                .map((trinket) => (
-                  <Card
-                    key={trinket.name}
-                    image={trinket.image}
-                    name={trinket.name}
-                    description={trinket.description}
-                    message={trinket.quote}
-                  />
-                ))}
-            </>
-          )}
-        </div>
+      <SearchBar placeholder="AAA Battery" onChange={setSearch} />
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        {trinkets.length === 0 && <LoadingCards number={20} />}
+        {trinkets.length > 0 && (
+          <>
+            {trinkets
+              .filter((trinket) => trinket.name.toLowerCase().includes(search))
+              .map((trinket) => (
+                <Card
+                  key={trinket.name}
+                  image={trinket.image}
+                  name={trinket.name}
+                  description={trinket.description}
+                  message={trinket.quote}
+                />
+              ))}
+          </>
+        )}
+      </div>
     </>
   );
 }
