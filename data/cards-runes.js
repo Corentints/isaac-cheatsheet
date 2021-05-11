@@ -1,4 +1,4 @@
-[
+export const cardsRunes = [
     {
         "name": "0 - The Fool",
         "id": "1",

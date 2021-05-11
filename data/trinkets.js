@@ -1,4 +1,4 @@
-[
+export const trinkets = [
     {
         "name": "???'s Soul",
         "id": "57",

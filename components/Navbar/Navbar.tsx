@@ -1,19 +1,12 @@
 import { Disclosure } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { NavLink } from "react-router-dom";
 import { CardRune, DiceRoom, Item, Trinket } from "../../types";
-import GlobalSearch from "./GlobalSearch";
+import GlobalSearch from "../GlobalSearch";
 import { useState } from "react";
+import ActiveLink from "./ActiveLink";
 
-type NavbarProps = {
-  items: Array<Item>;
-  cardsRunes: Array<CardRune>;
-  trinkets: Array<Trinket>;
-  diceRooms: Array<DiceRoom>;
-};
-
-export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: NavbarProps) {
+export default function Navbar() {
   const [openGlobalSearch, setOpenGlobalSearch] = useState(false);
   return (
     <div>
@@ -26,11 +19,7 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                   <div className="flex-shrink-0">{/* img */}</div>
                   <div className="hidden lg:block">
                     <div className="flex space-x-4">
-                      <NavLink
-                        exact
-                        to="/items"
-                        activeClassName="bg-gray-900 rounded-md"
-                      >
+                      <ActiveLink href="/items">
                         <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-8 h-8 pixelated"
@@ -39,12 +28,8 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                           />
                           <span>items</span>
                         </span>
-                      </NavLink>
-                      <NavLink
-                        exact
-                        to="/cards-runes"
-                        activeClassName="bg-gray-900 rounded-md"
-                      >
+                      </ActiveLink>
+                      <ActiveLink href="/cards-runes">
                         <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-6 h-auto pixelated"
@@ -53,12 +38,8 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                           />
                           <span>cards/runes</span>
                         </span>
-                      </NavLink>
-                      <NavLink
-                        exact
-                        to="/trinkets"
-                        activeClassName="bg-gray-900 rounded-md"
-                      >
+                      </ActiveLink>
+                      <ActiveLink href="/trinkets">
                         <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-8 h-8 pixelated"
@@ -67,12 +48,8 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                           />
                           <span>trinkets</span>
                         </span>
-                      </NavLink>
-                      <NavLink
-                        exact
-                        to="/dice-rooms"
-                        activeClassName="bg-gray-900 rounded-md"
-                      >
+                      </ActiveLink>
+                      <ActiveLink href="/dice-rooms">
                         <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                           <img
                             className="w-8 h-8 pixelated"
@@ -81,7 +58,7 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                           />
                           <span>dice rooms</span>
                         </span>
-                      </NavLink>
+                      </ActiveLink>
                     </div>
                   </div>
                 </div>
@@ -100,10 +77,6 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                   <GlobalSearch
                     open={openGlobalSearch}
                     setOpen={setOpenGlobalSearch}
-                    items={items}
-                    cardsRunes={cardsRunes}
-                    trinkets={trinkets}
-                    diceRooms={diceRooms}
                   />
                 </div>
                 <div className="flex lg:hidden">
@@ -123,11 +96,7 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
             <Disclosure.Panel className="lg:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                <NavLink
-                  exact
-                  to="/items"
-                  activeClassName="bg-gray-900 rounded-md"
-                >
+                <ActiveLink href="/items">
                   <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                     <img
                       className="w-8 h-8 pixelated"
@@ -136,12 +105,8 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                     />
                     <span>items</span>
                   </span>
-                </NavLink>
-                <NavLink
-                  exact
-                  to="/cards-runes"
-                  activeClassName="bg-gray-900 rounded-md"
-                >
+                </ActiveLink>
+                <ActiveLink href="/cards-runes">
                   <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                     <img
                       className="w-6 h-auto pixelated"
@@ -150,12 +115,8 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                     />
                     <span>cards/runes</span>
                   </span>
-                </NavLink>
-                <NavLink
-                  exact
-                  to="/trinkets"
-                  activeClassName="bg-gray-900 rounded-md"
-                >
+                </ActiveLink>
+                <ActiveLink href="/trinkets">
                   <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
                     <img
                       className="w-8 h-8 pixelated"
@@ -164,21 +125,17 @@ export default function Navbar({ items, cardsRunes, trinkets, diceRooms }: Navba
                     />
                     <span>trinkets</span>
                   </span>
-                </NavLink>
-                <NavLink
-                        exact
-                        to="/dice-rooms"
-                        activeClassName="bg-gray-900 rounded-md"
-                      >
-                        <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
-                          <img
-                            className="w-8 h-8 pixelated"
-                            src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
-                            alt="Dice rooms"
-                          />
-                          <span>dice rooms</span>
-                        </span>
-                      </NavLink>
+                </ActiveLink>
+                <ActiveLink href="/dice-rooms">
+                  <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                    <img
+                      className="w-8 h-8 pixelated"
+                      src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
+                      alt="Dice rooms"
+                    />
+                    <span>dice rooms</span>
+                  </span>
+                </ActiveLink>
               </div>
             </Disclosure.Panel>
           </>

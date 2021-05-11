@@ -1,26 +1,34 @@
-import { CardRune, DiceRoom, Item, Trinket } from "../../types";
-import { Fragment, useState } from "react";
+import { CardRune, DiceRoom, Item, Trinket } from "../types";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Card from "./Card";
 
 type GlobalSearchProps = {
   open: boolean;
   setOpen: (value: boolean) => void;
-  items: Array<Item>;
-  cardsRunes: Array<CardRune>;
-  trinkets: Array<Trinket>;
-  diceRooms: Array<DiceRoom>;
 };
 
-export default function GlobalSearch({
-  open,
-  setOpen,
-  items,
-  cardsRunes,
-  trinkets,
-  diceRooms
-}: GlobalSearchProps) {
-  const [search, setSearch] = useState("");
+type SearchResult = {
+  results: Array<Item | Trinket | CardRune | DiceRoom>;
+};
+
+export default function GlobalSearch({ open, setOpen }: GlobalSearchProps) {
+  const [search, setSearch] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<
+    Array<Item | CardRune | DiceRoom | Trinket>
+  >([]);
+
+  const handleSearch = (search: string) => {
+    fetch("/api/search?search=" + search)
+      .then((result) => result.json())
+      .then((result: SearchResult) =>
+        setSearchResults([...Object.values(result.results)])
+      );
+  };
+
+  useEffect(() => {
+    handleSearch(search);
+  }, [search]);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -31,7 +39,7 @@ export default function GlobalSearch({
         open={open}
         onClose={setOpen}
       >
-        <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div className="flex items-start justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -60,10 +68,10 @@ export default function GlobalSearch({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-700 rounded-lg shadow-xl sm:my-8 sm:align-top sm:max-w-xl sm:w-full sm:p-2">
+            <div className="inline-block w-full px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-700 rounded-lg shadow-xl w-ful sm:my-8 sm:align-top sm:max-w-xl sm:p-2">
               <div>
                 <input
-                  onChange={({ target }) => setSearch(target.value.toLowerCase())}
+                  onChange={({ target }) => setSearch(target.value)}
                   value={search}
                   type="text"
                   name="search"
@@ -73,17 +81,15 @@ export default function GlobalSearch({
                 />
               </div>
               <div className="flex flex-col mt-3 space-y-3">
-                {search.length > 0 &&
-                  [...items, ...cardsRunes, ...trinkets, ...diceRooms]
-                    .filter((item) => item.name.toLowerCase().includes(search))
-                    .map((item) => (
-                      <Card
-                        key={item.name}
-                        image={item.image}
-                        name={item.name}
-                        description={item.description}
-                      />
-                    ))}
+                {searchResults.length > 0 &&
+                  searchResults.map((entity) => (
+                    <Card
+                      key={entity.name + entity.id}
+                      image={entity.image}
+                      name={entity.name}
+                      description={entity.description}
+                    />
+                  ))}
               </div>
             </div>
           </Transition.Child>
