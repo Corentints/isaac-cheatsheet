@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import "../styles/globals.css";
 import Head from "next/head";
+import Footer from "../components/Footer";
 
 type AppProps = {
   Component: any;
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8 pt-[70px] bg-gray-700">
         <Component {...pageProps} key={router.pathname} />
       </div>
+      <Footer />
     </>
   );
 }
