@@ -1,4 +1,6 @@
-import GitHubButton from "react-github-btn";
+import dynamic from 'next/dynamic'
+const GitHubButton = dynamic(import('react-github-btn'), { ssr: false }) // Async API cannot be server-side rendered
+
 
 export default function Footer() {
   return (
