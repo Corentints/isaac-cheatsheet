@@ -31,6 +31,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           property="og:image"
           content="https://www.isaac-cheatsheet.com/images/preview.png"
         />
+        <meta
+          name="description"
+          content="Find all the items, trinkets, runes, cards, etc. for the best in-game experience on The Binding of Isaac: Rebirth!"
+        />
       </Head>
       <Navbar />
       <div className="px-4 pb-12 mx-auto max-w-7xl sm:px-6 lg:px-8 pt-[70px] bg-gray-700">
