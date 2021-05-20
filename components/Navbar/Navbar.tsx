@@ -59,6 +59,16 @@ export default function Navbar() {
                           <span>dice rooms</span>
                         </span>
                       </ActiveLink>
+                      <ActiveLink href="/transformations">
+                      <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                        <img
+                            className="w-8 h-8 pixelated"
+                            src="https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/78/Collectible_D20_icon.png"
+                            alt="Transformations"
+                        />
+                        <span>transformations</span>
+                      </span>
+                      </ActiveLink>
                     </div>
                   </div>
                 </div>
