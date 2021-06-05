@@ -37,6 +37,6 @@ export interface Transformation {
   image: string;
   description: string;
   requirements: string;
-  items: Array<Item>;
-  trinkets: Array<Item>;
+  items: Array<string>;
+  trinkets: Array<string>;
 }

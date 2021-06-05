@@ -19,3 +19,12 @@ body {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
 }
+
+.tooltip-container {
+  --tooltipBackground: #fff!important;
+  background-color: transparent!important;
+  border-radius: unset!important;
+  border: none!important;
+  padding: 0!important;
+  max-width: 500px;
+}
