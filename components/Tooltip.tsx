@@ -1,5 +1,4 @@
 import {usePopperTooltip} from "react-popper-tooltip";
-import {Item} from "../types";
 import Card from "./Card";
 
 type CardProps = {

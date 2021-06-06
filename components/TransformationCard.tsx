@@ -23,7 +23,6 @@ export default function TransformationCard({
     }
 
     return (<>
-
             <div
                 className="flex items-start px-6 py-5 space-x-3 text-gray-300 bg-gray-800 border-2 border-gray-900 rounded-lg shadow-sm hover:border-gray-900 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
             >
@@ -40,12 +39,12 @@ export default function TransformationCard({
                         {transformation.items &&
                         <p className="text-xs text-gray-400 mb-2">Requires three of the following items : </p>}
                         {transformation.items && itemsTransformation.map((item) => (
-                            <Tooltip item={item} />
+                            <Tooltip key={item.name + item.id} item={item} />
                         ))}
 
                         {transformation.trinkets && <p className="text-xs text-gray-400 mb-2">or trinkets : </p>}
                         {transformation.trinkets && trinketsTransformation.map((trinket) => (
-                            <Tooltip item={trinket} />
+                            <Tooltip key={trinket.name + trinket.id} item={trinket} />
                         ))}
                         {transformation.requirements && 
                         <>

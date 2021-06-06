@@ -21,7 +21,8 @@ body {
 }
 
 .tooltip-container {
-  --tooltipBackground: #fff!important;
+  --tooltipBackground: #1F2937!important;
+  --tooltipBorder:#000!important;
   background-color: transparent!important;
   border-radius: unset!important;
   border: none!important;

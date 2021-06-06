@@ -31,7 +31,7 @@ function Transformations({transformations}: TransformationsProps) {
                     )
                         .map((transformation) => (
                             <TransformationCard
-                                key={transformation.id + Math.random()}
+                                key={transformation.id}
                                 transformation={transformation}
                             />
 
