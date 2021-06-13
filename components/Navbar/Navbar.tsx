@@ -1,7 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { CardRune, DiceRoom, Item, Trinket } from "../../types";
 import GlobalSearch from "../GlobalSearch";
 import { useState } from "react";
 import ActiveLink from "./ActiveLink";
@@ -10,7 +9,7 @@ export default function Navbar() {
   const [openGlobalSearch, setOpenGlobalSearch] = useState(false);
   return (
     <div>
-      <Disclosure as="nav" className="fixed w-screen bg-gray-800">
+      <Disclosure as="nav" className="fixed z-50 w-screen bg-gray-800">
         {({ open }) => (
           <>
             <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
