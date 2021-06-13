@@ -30,3 +30,13 @@ export interface DiceRoom {
   image: string;
   description: string;
 }
+
+export interface Transformation {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  requirements: string;
+  items: Array<string>;
+  trinkets: Array<string>;
+}
