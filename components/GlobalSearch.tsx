@@ -1,7 +1,8 @@
-import { CardRune, DiceRoom, Item, Trinket } from "../types";
+import {CardRune, DiceRoom, Item, Transformation, Trinket} from "../types";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Card from "./Card";
+import TransformationCard from "./TransformationCard";
 
 type GlobalSearchProps = {
   open: boolean;
@@ -10,6 +11,7 @@ type GlobalSearchProps = {
 
 type SearchResult = {
   results: Array<Item | Trinket | CardRune | DiceRoom>;
+  transformations: Array<Transformation>;
 };
 
 export default function GlobalSearch({ open, setOpen }: GlobalSearchProps) {
@@ -17,12 +19,16 @@ export default function GlobalSearch({ open, setOpen }: GlobalSearchProps) {
   const [searchResults, setSearchResults] = useState<
     Array<Item | CardRune | DiceRoom | Trinket>
   >([]);
+  const [searchTransformationResults, setSearchTransformationResults] = useState<
+      Array<Transformation>>([]);
 
   const handleSearch = (search: string) => {
     fetch("/api/search?search=" + search)
       .then((result) => result.json())
-      .then((result: SearchResult) =>
-        setSearchResults([...Object.values(result.results)])
+      .then((result: SearchResult) => {
+            setSearchResults([...Object.values(result.results)])
+            setSearchTransformationResults([...Object.values(result.transformations)])
+          }
       );
   };
 
@@ -90,6 +96,13 @@ export default function GlobalSearch({ open, setOpen }: GlobalSearchProps) {
                       description={entity.description}
                     />
                   ))}
+                {searchTransformationResults.length > 0 &&
+                searchTransformationResults.map((transformation) => (
+                    <TransformationCard
+                        key={transformation.id}
+                        transformation={transformation}
+                    />
+                ))}
               </div>
             </div>
           </Transition.Child>
