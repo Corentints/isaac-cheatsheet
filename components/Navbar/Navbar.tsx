@@ -9,7 +9,7 @@ export default function Navbar() {
   const [openGlobalSearch, setOpenGlobalSearch] = useState(false);
   return (
     <div>
-      <Disclosure as="nav" className="fixed z-50 w-screen bg-gray-800">
+      <Disclosure as="nav" className="fixed w-screen bg-gray-800">
         {({ open }) => (
           <>
             <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
@@ -58,6 +58,16 @@ export default function Navbar() {
                           <span>dice rooms</span>
                         </span>
                       </ActiveLink>
+                        <ActiveLink href="/transformations">
+                      <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                        <img
+                            className="w-7 pixelated"
+                            src="./images/transformations/transformation_Oh_Crap.png"
+                            alt="Transformations"
+                        />
+                        <span>transformations</span>
+                      </span>
+                        </ActiveLink>
                     </div>
                   </div>
                 </div>
@@ -135,6 +145,16 @@ export default function Navbar() {
                     <span>dice rooms</span>
                   </span>
                 </ActiveLink>
+                  <ActiveLink href="/transformations">
+                    <span className="flex items-center px-3 py-2 space-x-2 text-sm font-medium text-gray-300 rounded-md">
+                      <img
+                          className="w-7 pixelated"
+                          src="./images/transformations/transformation_Oh_Crap.png"
+                          alt="Transformations"
+                      />
+                      <span>transformations</span>
+                    </span>
+                  </ActiveLink>
               </div>
             </Disclosure.Panel>
           </>
